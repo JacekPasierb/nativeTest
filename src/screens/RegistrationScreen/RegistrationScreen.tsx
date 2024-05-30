@@ -1,30 +1,34 @@
 import React, { useState } from "react";
 import {
   Alert,
+  Button,
   ImageBackground,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  Text,
   TouchableWithoutFeedback,
 } from "react-native";
 import { Circle, Path, Svg } from "react-native-svg";
 import {
   BoxAvatar,
   BoxInputs,
-  Button,
   ButtonText,
   Container,
   Input,
   NavText,
+  StyledButton,
   Title,
 } from "./RegistrationScreen.styled";
+import { useNavigation } from "@react-navigation/native";
 
 const RegistrationScreen = () => {
   const [login, setLogin] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [focusedField, setFocusedField] = useState("");
+  const navigation = useNavigation();
 
   const onLogin = () => {
     Alert.alert("Credentials", `${login} + ${password}`);
@@ -108,10 +112,16 @@ const RegistrationScreen = () => {
                 />
               </BoxInputs>
 
-              <Button onPress={onLogin}>
+              <StyledButton onPress={onLogin}>
                 <ButtonText>Registration</ButtonText>
-              </Button>
-              <NavText>Already have an account? Sign in</NavText>
+              </StyledButton>
+              <NavText>
+                Already have an account?
+                <Text onPress={() => navigation.navigate("Login" as never)}>
+                  {" "}
+                  Sign in
+                </Text>
+              </NavText>
             </Container>
           </ScrollView>
         </KeyboardAvoidingView>

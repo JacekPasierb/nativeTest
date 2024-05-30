@@ -1,27 +1,33 @@
 import React, { useState } from "react";
 import {
   Alert,
+  Button,
   ImageBackground,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
+  Text,
   TouchableWithoutFeedback,
 } from "react-native";
 import {
   BoxInputs,
-  Button,
+ 
   ButtonText,
   Container,
   Input,
   NavText,
+  StyledButton,
   Title,
 } from "./LoginScreen.styled";
+import { useNavigation } from "@react-navigation/native";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [focusedField, setFocusedField] = useState("");
+  const navigation = useNavigation();
+
 
   const onLogin = () => {
     Alert.alert("Credentials", `${email} + ${password}`);
@@ -70,10 +76,11 @@ const LoginScreen = () => {
                 />
               </BoxInputs>
 
-              <Button onPress={onLogin}>
+              <StyledButton onPress={onLogin}>
                 <ButtonText>Login</ButtonText>
-              </Button>
-              <NavText>Don't have an account? Register now</NavText>
+              </StyledButton>
+              <NavText>Don't have an account? <Text onPress={() => navigation.navigate("Registration" as never)}>Register now</Text></NavText>
+            
             </Container>
           </ScrollView>
         </KeyboardAvoidingView>

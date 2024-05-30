@@ -42,7 +42,7 @@ export const Input = styled.TextInput<{ isFocused: boolean }>`
   margin-bottom: 10px;
 `;
 
-export const Button = styled.TouchableOpacity`
+export const StyledButton = styled.TouchableOpacity`
   margin-top: 43px;
   width: 100%;
   padding: 16px;
