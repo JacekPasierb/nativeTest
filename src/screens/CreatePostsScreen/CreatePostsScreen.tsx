@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Image,
   TextInput,
+  ScrollView,
 } from "react-native";
 import { CameraType } from "expo-camera";
 import { CameraView } from "expo-camera";
@@ -60,6 +61,7 @@ export default function CreatePostsScreen() {
   }
 
   return (
+    
     <View style={styles.container}>
       <CameraView style={styles.camera} facing={facing} ref={cameraRef}>
         <TouchableOpacity style={styles.button} onPress={takePhoto}>
@@ -86,10 +88,10 @@ export default function CreatePostsScreen() {
       <View style={styles.postForm}>
         <TextInput
           style={styles.postName}
-          placeholder="Title..."
+          placeholder="Name"
           inputMode="text"
         />
-        {/* <TextInput style={ styles.postName } placeholder="Location" inputMode="navigation"/> */}
+        <TextInput style={ styles.postName } placeholder="Location" inputMode="text"/>
         <TouchableOpacity style={styles.postButton} activeOpacity={0.5}>
           <Text style={styles.postButtonText}>Publicate</Text>
         </TouchableOpacity>
