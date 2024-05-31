@@ -14,7 +14,6 @@ export const Container = styled.View`
   margin-top: 70px;
 `;
 
-
 export const Title = styled.Text`
   margin-top: 92px;
   margin-bottom: 32px;
@@ -62,3 +61,5 @@ export const NavText = styled.Text`
   font-size: 16px;
   color: #1b4371;
 `;
+
+

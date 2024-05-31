@@ -11,7 +11,7 @@
     "outDir": "./dist",
     "rootDir": "./"
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "App.tsx"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "App.tsx", "src/screens/Home/Home.tsx"],
   "exclude": ["node_modules"],
   "extends": "expo/tsconfig.base"
 }

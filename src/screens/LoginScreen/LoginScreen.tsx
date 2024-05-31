@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
   Alert,
-  Button,
   ImageBackground,
   Keyboard,
   KeyboardAvoidingView,
@@ -12,7 +11,6 @@ import {
 } from "react-native";
 import {
   BoxInputs,
- 
   ButtonText,
   Container,
   Input,
@@ -21,16 +19,25 @@ import {
   Title,
 } from "./LoginScreen.styled";
 import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "../../navigationTypes";
 
+type RegistrationScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  "Login"
+>;
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [focusedField, setFocusedField] = useState("");
-  const navigation = useNavigation();
-
+  const navigation = useNavigation<RegistrationScreenNavigationProp>();
 
   const onLogin = () => {
-    Alert.alert("Credentials", `${email} + ${password}`);
+    if (!email || !password) {
+      Alert.alert("Enter all data pleace!!!");
+      return;
+    }
+    navigation.navigate('Home', { screen: 'PostsScreen' });
   };
 
   const handleFocus = (field: string) => {
@@ -79,8 +86,12 @@ const LoginScreen = () => {
               <StyledButton onPress={onLogin}>
                 <ButtonText>Login</ButtonText>
               </StyledButton>
-              <NavText>Don't have an account? <Text onPress={() => navigation.navigate("Registration" as never)}>Register now</Text></NavText>
-            
+              <NavText>
+                Don't have an account?{" "}
+                <Text onPress={() => navigation.navigate("Registration")}>
+                  Register now
+                </Text>
+              </NavText>
             </Container>
           </ScrollView>
         </KeyboardAvoidingView>

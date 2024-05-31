@@ -22,13 +22,18 @@ import {
   Title,
 } from "./RegistrationScreen.styled";
 import { useNavigation } from "@react-navigation/native";
-
+import { RootStackParamList } from "../../navigationTypes";
+import { StackNavigationProp } from "@react-navigation/stack";
+type RegistrationScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'Registration'
+>;
 const RegistrationScreen = () => {
   const [login, setLogin] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [focusedField, setFocusedField] = useState("");
-  const navigation = useNavigation();
+  const navigation = useNavigation<RegistrationScreenNavigationProp>();
 
   const onLogin = () => {
     Alert.alert("Credentials", `${login} + ${password}`);
@@ -117,7 +122,7 @@ const RegistrationScreen = () => {
               </StyledButton>
               <NavText>
                 Already have an account?
-                <Text onPress={() => navigation.navigate("Login" as never)}>
+                <Text onPress={() => navigation.navigate("Login")}>
                   {" "}
                   Sign in
                 </Text>
